@@ -65,6 +65,13 @@ And signout/logout:
 /drdoc_logout
 ```
 
+### Pi Agent Tool Calling
+
+Example:
+```
+Suche im Dr.DOC Archiv "rec" alle Rechnungen von Firma Amazon aus diesem Jahr.
+```
+
 ## Configuration
 
 The plugin utilizes configuration options supplied by the Dr.DOC client or environment variables.
