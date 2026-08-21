@@ -152,8 +152,10 @@ export const drdocTools = [
       if (process.env.DRDOC_DEBUG)
         msgLog('drdoc_properties_fields:', args);
       return safeExecuteClient(["archive"], args, async (client, safeArgs) => {
-        const defNameArray = ['STD_AI_INVOICE_IN', 'DD_FIELD_DESC', 'STD_FIELD_DESC'];
+        const defNameArray = [process.env.DRDOC_AI_FS, 'STD_AI_INVOICE_IN', 'DD_FIELD_DESC', 'STD_FIELD_DESC'];
         for (let defName of defNameArray) {
+          if (!defName)
+            continue;
           const fs = await client.getFieldSelection(safeArgs.archive, "IMPORT_ASCII", defName);
           if (process.env.DRDOC_DEBUG)
             msgLog('props:', fs);
