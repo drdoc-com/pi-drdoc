@@ -46,6 +46,25 @@ pi install git:https://github.com/drdoc-com/pi-drdoc
 
 ---
 
+## Usage
+
+### Pi Slash Commands (within Pi Agent)
+
+Use Pi Slash Command (within Pi Agent) to signin/login.
+Format:
+```bash
+/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>
+```
+Example:
+```bash
+/drdoc_login https://drdoc.com demo password "" 1
+```
+
+And signout/signout:
+```bash
+/drdoc_logout
+```
+
 ## Configuration
 
 The plugin utilizes configuration options supplied by the Dr.DOC client or environment variables.
