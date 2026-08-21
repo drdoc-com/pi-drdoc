@@ -1,6 +1,6 @@
 {
   "name": "@drdoc-com/pi-drdoc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dr.DOC DMS Integration Package for PI Agent",
   "type": "module",
   "license": "Apache License 2.0",
