@@ -1,0 +1,32 @@
+{
+  "name": "@drdoc-com/pi-drdoc",
+  "version": "1.0.0",
+  "description": "Dr.DOC DMS Integration Package for PI Agent",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["pi-package", "pi-agent", "drdoc", "rest-api", "skill", "dms", "Dr.DOC"],
+  "private": false,
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drdoc-com/pi-drdoc.git"
+  },
+  "author": "Dr.DOC GmbH, DE-80802 Munich",
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "@types/node": "^26.2.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
+
