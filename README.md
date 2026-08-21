@@ -35,9 +35,13 @@ To allow **Dr.DOC** (or external tools) to send requests to Pi using the standar
 ## Installation
 
 Install the package via npm or directly into your Pi extension environment:
-
 ```bash
-npm install @drdoc-com/pi-drdoc
+pi install npm:@drdoc-com/pi-drdoc
+```
+
+Or via GitHub:
+```bash
+pi install git:https://github.com/drdoc-com/pi-drdoc
 ```
 
 ---
