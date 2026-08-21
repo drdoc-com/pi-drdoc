@@ -1,6 +1,6 @@
 # Pi Plugin for Dr.DOC
 
-An integration plugin Package for the **Pi Agent** (`pi.dev`) ecosystem to interact seamlessly with the [**Dr.DOC Document Management System** \(DMS/ECM\)](drdoc.com/node/de/products/web). 
+An integration plugin Package for the **Pi Agent** (`pi.dev`) ecosystem to interact seamlessly with the [**Dr.DOC Document Management System** \(DMS/ECM\)](https://drdoc.com/node/de/products/web). 
 
 This plugin allows the Pi Agent to query Dr.DOC archives, fetch document blobs, store files locally, generate direct web links, and display inline document previews.
 
