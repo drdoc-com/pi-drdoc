@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Dr.DOC DMS Integration Package for PI Agent",
   "type": "module",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "keywords": ["pi-package", "pi-agent", "drdoc", "rest-api", "skill", "dms", "Dr.DOC"],
   "private": false,
   "pi": {
