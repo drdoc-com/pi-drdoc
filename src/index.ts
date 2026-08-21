@@ -34,18 +34,18 @@ export default function (pi: any): void {
       try {
         //initializeDrDocClient({ baseUrl, username, password, totp, ignoreSSL });
         //const client = new DrDocClient({ baseUrl, username, password, totp, ignoreSSL });
-        const client = await getClient({ baseUrl, username, password, totp, ignoreSSL: (ignoreSSL == '1' || ignoreSSL == 'true') });
+        const client = await getClient({ baseUrl, username, password, totp, ignoreSSL: (ignoreSSL == '1' || ignoreSSL == 'true') }, true);
         if (process.env.DRDOC_DEBUG)
           msgLog('Client: ', client);
 
-        const response = await client.signin(username, password, totp);
+        /*const response = await client.signin(username, password, totp);
 
         if (response.HasError) {
           msgError(`Anmeldung fehlgeschlagen: ${response.Error?.Message}`);
           return;
         }
 
-        msgInfo("Erfolgreich an Dr.DOC angemeldet. Die Session ist aktiv.");
+        msgInfo("Erfolgreich an Dr.DOC angemeldet. Die Session ist aktiv.");*/
       } catch (err: any) {
         msgError(`Fehler bei der Verbindung: ${err.message}`);
       }

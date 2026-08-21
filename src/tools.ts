@@ -11,13 +11,27 @@ let clientInstance: DrDocClient | null = null;
  */
 export async function getClient(config: DrDocConfig = {} as DrDocConfig, force: Boolean = false): Promise<DrDocClient> {
   if (!clientInstance || force) {
-    msgInfo('getClient: init instance');
+    if (process.env.DRDOC_DEBUG)
+      msgInfo('getClient: init instance');
     clientInstance = new DrDocClient(config);
+
     // Verbindung testen
-    if (await clientInstance.state())
-      msgInfo('getClient: state ok');
+    if (await clientInstance.state()) {
+      msgInfo('Bereits in Dr.DOC angemeldet. Die Session ist aktiv.');
+    }
     else {
-      throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc_login ausführen.");
+      const response = await clientInstance.signin(config.username, config.password, config.totp);
+      if (response.HasError)
+        throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc_login ausführen.");
+
+      msgInfo("Erfolgreich an Dr.DOC angemeldet. Die Session ist aktiv.");
+
+      // Verbindung testen
+      /*if (await clientInstance.state())
+        msgInfo('getClient: state ok');
+      else {
+
+      }*/
     }
   }
   return clientInstance;
@@ -183,8 +197,8 @@ Beispiele für Suchoperatoren:
 Datumsformat: DD.MM.YYYY
 Zahlenformat: 0.00
 Variablen:
-- %DY% Variable für Datumsbereich im aktuellen/diesen Jahr
-- %DMY% Variable für Datumsbereich im aktuellen/diesen Monat
+- %DY% Variable für Datumsbereich im aktuellen/diesen Jahr (wird z.B. zu: *.2021)
+- %DMY% Variable für Datumsbereich im aktuellen/diesen Monat (wird z.B. zu: *.01.2021)
 - %DWY% Variable für Datumsbereich in der aktuellen/diesen Woche (7 Tage)
 - %B% Variable für angemeldeten Benutzer
 - %D% Variable für aktuelles Datum (heutiger Tag)

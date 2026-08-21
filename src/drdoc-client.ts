@@ -163,7 +163,8 @@ export class DrDocClient {
     try {
       const dataToSave = JSON.stringify(this.config, null, 2);
       fs.writeFileSync(this.storageFilePath, dataToSave, "utf-8");
-      msgLog('DD Anmeldedaten wurden gespeichert unter: ', this.storageFilePath);
+      if (process.env.DRDOC_DEBUG)
+        msgLog('Dr.DOC Anmeldedaten wurden gespeichert unter: ', this.storageFilePath);
     } catch (error) {
       throw new Error(`Fehler beim Speichern der Anmeldedaten: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -192,8 +193,11 @@ export class DrDocClient {
     if (setCookie) {
       const match = setCookie.match(/uid=([^;]+)/);
       if (match) {
+        const oldCookieValue = this.config.sessionCookie;
         this.config.sessionCookie = `uid=${match[1]}`;
-        this.saveCredentials();
+        // bei Cookie Änderung, Cookie uid explizit abspeichern
+        if (oldCookieValue != this.config.sessionCookie)
+          this.saveCredentials();
       }
     }
   }
@@ -330,13 +334,13 @@ export class DrDocClient {
       // Dauerhaftes Speichern der gesamten DrDocConfig nach erfolgreichem Login
       this.saveCredentials();
 
-      //if (process.env.DRDOC_DEBUG)
-      //  msgLog('DD: Sign in OK:', this.config);
-      msgInfo('DD: Sign in OK: ' + JSON.stringify(this.config));
+      if (process.env.DRDOC_DEBUG)
+        msgLog('DD: Sign in OK: ', JSON.stringify(this.config));
     }
     else {
       //if (process.env.DRDOC_DEBUG)
-      msgError('DD: Sign in ERROR: ' + JSON.stringify(this.config));
+      if (process.env.DRDOC_DEBUG)
+        msgLog('DD: Sign in ERROR: ' + JSON.stringify(this.config));
     }
 
     return response;
@@ -351,11 +355,14 @@ export class DrDocClient {
 
     // Überprüfung auf erfolgreiche Anmeldung
     if (response && !response.HasError) {
-      msgLog('DD: State OK:', this.config);
+      if (process.env.DRDOC_DEBUG)
+        msgLog('Dr.DOC: State OK:', this.config);
       return true;
     }
     else {
-      msgError('Bitte erneut anmelden mit `/drdoc_login` DD: State ERROR: ' + JSON.stringify(this.config));
+      msgError('Bitte erneut anmelden mit Slash Command `/drdoc_login`');
+      if (process.env.DRDOC_DEBUG)
+        msgLog('Dr.DOC: State ERROR: ' + JSON.stringify(this.config));
       return false;
     }
   }
