@@ -1,10 +1,18 @@
 {
   "name": "@drdoc-com/pi-drdoc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dr.DOC DMS Integration Package for PI Agent",
   "type": "module",
   "license": "Apache License 2.0",
-  "keywords": ["pi-package", "pi-agent", "drdoc", "rest-api", "skill", "dms", "Dr.DOC"],
+  "keywords": [
+    "pi-package",
+    "pi-agent",
+    "drdoc",
+    "rest-api",
+    "skill",
+    "dms",
+    "Dr.DOC"
+  ],
   "private": false,
   "pi": {
     "extensions": [
@@ -29,4 +37,3 @@
     "@earendil-works/pi-coding-agent": "*"
   }
 }
-
