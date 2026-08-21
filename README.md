@@ -66,3 +66,12 @@ The plugin utilizes configuration options supplied by the Dr.DOC client or envir
 
 This project is licensed under the Apache License 2.0.
 Dr.DOC DMS is licensed is under proprietary License.
+
+---
+
+## Documentation
+
+See Dr.DOC Web REST API Documentation:
+[https://drdoc.com/node/de/products/web/doku/rest-api](https://drdoc.com/node/de/products/web/doku/rest-api)
+
+
