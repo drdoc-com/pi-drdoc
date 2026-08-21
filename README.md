@@ -1,4 +1,4 @@
-# Pi Plugin for Dr.DOC
+# Pi Plugin for Dr.DOC DMS
 
 An integration plugin Package for the **Pi Agent** (`pi.dev`) ecosystem to interact seamlessly with the [**Dr.DOC Document Management System** \(DMS/ECM\)](https://drdoc.com/node/de/products/web). 
 
