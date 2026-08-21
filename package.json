@@ -7,11 +7,11 @@
   "keywords": [
     "pi-package",
     "pi-agent",
-    "drdoc",
     "rest-api",
     "skill",
-    "dms",
-    "Dr.DOC"
+    "drdoc",
+    "Dr.DOC",
+    "dms"
   ],
   "private": false,
   "pi": {
@@ -31,7 +31,7 @@
   "author": "Dr.DOC GmbH, DE-80802 Munich",
   "devDependencies": {
     "typescript": "^7.0.2",
-    "@types/node": "^26.2.0"
+    "@types/node": "^24.0.0"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
