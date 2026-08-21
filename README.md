@@ -60,7 +60,7 @@ Example:
 /drdoc_login https://drdoc.com demo password "" 1
 ```
 
-And signout/signout:
+And signout/logout:
 ```bash
 /drdoc_logout
 ```
