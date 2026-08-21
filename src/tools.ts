@@ -17,7 +17,7 @@ export async function getClient(config: DrDocConfig = {} as DrDocConfig, force: 
     if (await clientInstance.state())
       msgInfo('getClient: state ok');
     else {
-      throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc-login ausführen.");
+      throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc_login ausführen.");
     }
   }
   return clientInstance;

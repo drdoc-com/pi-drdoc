@@ -27,7 +27,7 @@ export default function (pi: any): void {
         baseUrl = process.env.DRDOC_BASE_URL;
 
       if (!baseUrl || !username || !password) {
-        msgError("Fehler: Syntax ist `/drdoc-login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`");
+        msgError("Fehler: Syntax ist `/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`");
         return;
       }
 
