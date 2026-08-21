@@ -193,7 +193,7 @@ export class DrDocClient {
       const match = setCookie.match(/uid=([^;]+)/);
       if (match) {
         this.config.sessionCookie = `uid=${match[1]}`;
-        // this.saveCredentials(this.config);
+        this.saveCredentials();
       }
     }
   }
@@ -330,11 +330,13 @@ export class DrDocClient {
       // Dauerhaftes Speichern der gesamten DrDocConfig nach erfolgreichem Login
       this.saveCredentials();
 
-      msgLog('DD: Sign in OK:', this.config);
+      //if (process.env.DRDOC_DEBUG)
+      //  msgLog('DD: Sign in OK:', this.config);
+      msgInfo('DD: Sign in OK: ' + JSON.stringify(this.config));
     }
     else {
-
-      console.warn('DD: Sign in ERR:', this.config);
+      //if (process.env.DRDOC_DEBUG)
+      msgError('DD: Sign in ERROR: ' + JSON.stringify(this.config));
     }
 
     return response;
@@ -353,7 +355,7 @@ export class DrDocClient {
       return true;
     }
     else {
-      msgError('DD: State ERR:', this.config);
+      msgError('Bitte erneut anmelden mit `/drdoc_login` DD: State ERROR: ' + JSON.stringify(this.config));
       return false;
     }
   }

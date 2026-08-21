@@ -17,7 +17,7 @@ export default function (pi: any): void {
 
   // Login
   pi.registerCommand("drdoc_login", {
-    description: "Benutzer anmelden in Dr.DOC über die REST API und speichert die Session.",
+    description: "Benutzer anmelden in Dr.DOC über die REST API und speichert die Session: `/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`",
     handler: async (args: string, ctx: any) => {
       // Entfernen leerer Strings nach dem String-Split
       const parts = args.trim().split(/\s+/); //.filter(Boolean);
