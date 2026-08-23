@@ -87,9 +87,10 @@ The extension package utilizes configuration options supplied by the Dr.DOC clie
 | `DRDOC_BASE_URL` | Base URL of the Dr.DOC instance | `https://drdoc.com` |
 | `DRDOC_CONFIG_DIR` (alt. `PI_CONFIG_DIR`) | Custom directory for config files | `~/.pi/agent` |
 | `DRDOC_DOWNLOAD_DIR` | Custom directory for downloaded files | `~/.drdoc/downloads` |
-| `DRDOC_IGNORE_SSL` | Ignore TLS/SSL Errors (Set `NODE_TLS_REJECT_UNAUTHORIZED=0`) | `` |
+| `DRDOC_IGNORE_SSL` | Ignore TLS/SSL Errors (Set `NODE_TLS_REJECT_UNAUTHORIZED=0`) |  |
+| `DRDOC_AI_FS_<ArchiveName>` | Dr.DOC *Archive specific* IMPORT_ASCII FieldSelection Name for Field Descriptions. | `DRDOC_AI_FS` |
 | `DRDOC_AI_FS` | Dr.DOC IMPORT_ASCII FieldSelection Name for Field Descriptions. | `STD_AI_INVOICE_IN`, `DD_FIELD_DESC`, `STD_FIELD_DESC` |
-| `DRDOC_DEBUG` | Enable Debugging | `` |
+| `DRDOC_DEBUG` | Enable Debugging |  |
 
 ---
 
