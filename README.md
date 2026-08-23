@@ -61,7 +61,7 @@ Format:
 ```
 Example:
 ```bash
-/drdoc_login https://drdoc.com demo password "" 1
+/drdoc_login https://drdoc.com demo password 123456 1
 ```
 
 And signout/logout:
