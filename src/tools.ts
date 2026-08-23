@@ -186,7 +186,19 @@ Suchoperatoren:
 - ! als logischer NOT Operator als Prefix, muss dem Suchbegriff vorangestellt werden.
 - !* für leere Felder
 - <-> für Datumsbereich, Zeitraum, Bereichssuche, Zahlenbereich; A<->B von A bis einschließlich B; Format für Datumsbereich: DD.MM.YYYY<->DD.MM.YYYY z.B. 01.07.2024<->31.07.2024.
-Beispiele für Suchoperatoren:
+Datumsformat: DD.MM.YYYY
+Zahlenformat: 0.00
+Variablen:
+- %DY% Variable für Datumsbereich im *aktuellen Jahr*
+- %DMY% Variable für Datumsbereich im *aktuellen Monat*
+- %DWY% Variable für Datumsbereich in der *aktuellen Woche* (7 Tage)
+- %B% Variable für angemeldeten Benutzer
+- %D% Variable für aktuelles Datum (heutiger Tag)
+- %D-1% Variable für gestriges Datum bzw. gestern
+- %D-2% Variable für vorgestern
+- %D+1% Variable für morgiges Datum bzw. morgen
+- %D+2% Variable für übermorgen
+Beispiele:
 - *TEXT* für trunkierte/Substring Suche nach TEXT (Feldwert enthält TEXT), MUSS zwingend bei unklaren/ungenauen/unspezifischen Eingaben verwendet werden!
 - !*TEXT* für Feldwert enthält TEXT nicht
 - !* für leeren, nicht gefüllte Feldwerte
@@ -196,19 +208,9 @@ Beispiele für Suchoperatoren:
 - !*A*&*B* für Suche nach enthält (Substring) B aber enthält kein A
 - 01.01.2020<->31.12.2020 für Datumssuchbereichs-Suche (Bereichssuche) vom 01.01.2020 bis einschließlich 31.12.2020 (1 Jahr)
 - 01.07.2024<->31.07.2024 für Datumssuchbereichs-Suche (Bereichssuche) vom 01.07.2024 bis einschließlich 31.07.2024 für den Monat Juli 2024 (1 Monat)
-Datumsformat: DD.MM.YYYY
-Zahlenformat: 0.00
-Variablen:
-- %DY% Variable für Datumsbereich im aktuellen/diesen Jahr (wird z.B. zu: *.2021)
-- %DMY% Variable für Datumsbereich im aktuellen/diesen Monat (wird z.B. zu: *.01.2021)
-- %DWY% Variable für Datumsbereich in der aktuellen/diesen Woche (7 Tage)
-- %B% Variable für angemeldeten Benutzer
-- %D% Variable für aktuelles Datum (heutiger Tag)
-- %D-1% Variable für gestriges Datum bzw. gestern
-- %D-2% Variable für vorgestern
-- %D+1% Variable für morgiges Datum bzw. morgen
-- %D+2% Variable für übermorgen
-Beispiel: Filter für alle Eingangsrechnungen im Zeitraum Juli 2024 (01.07.2024 bis einschließlich 31.07.2024) von Firma Amazon:
+- %DY% für Datumssuchbereichs-Suche (Bereichssuche) im aktuellen Jahr, z.B. vom 01.01.2020 bis einschließlich 31.12.2020 (1 Jahr)
+- %DMY% für Datumssuchbereichs-Suche (Bereichssuche) im aktuellen Monat, z.B. vom 01.01.2020 bis einschließlich 31.01.2020 (1 Monat)
+Text-Beispiel: Filter für alle Eingangsrechnungen im Zeitraum Juli 2024 (01.07.2024 bis einschließlich 31.07.2024) von Firma Amazon:
 { date: "01.07.2024<->31.07.2024", c_company: "*Amazon*", inout: "0", type: "Rechnung" }
     `,
     parameters: {
