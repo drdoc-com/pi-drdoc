@@ -1,8 +1,8 @@
-# Pi Plugin for Dr.DOC DMS
+# Pi Package for Dr.DOC DMS
 
-An integration plugin Package for the **Pi Agent** (`pi.dev`) ecosystem to interact seamlessly with the [**Dr.DOC Document Management System** \(DMS/ECM\)](https://drdoc.com/node/de/products/web). 
+An integration package/plugin/extension for the **Pi Agent** (`pi.dev`) ecosystem to interact seamlessly with the [**Dr.DOC® Document Management System** \(ECM/DMS\)](https://drdoc.com/node/de/products/web). 
 
-This plugin allows the Pi Agent to query Dr.DOC archives, fetch document blobs, store files locally, generate direct web links, and display inline document previews.
+This extension package allows the Pi Agent to query Dr.DOC archives, fetch document blobs, store files locally, generate direct web links, and display inline document previews.
 
 ---
 
@@ -11,14 +11,18 @@ This plugin allows the Pi Agent to query Dr.DOC archives, fetch document blobs, 
 The integration between Pi Agent and Dr.DOC is split into two primary operational directions:
 
 ### 1. Pi → Dr.DOC (This Plugin)
-This plugin enables the **Pi Agent** to make outgoing API calls to **Dr.DOC**. The agent uses these tool functions to search archives, retrieve documents, save them locally, and process binary/image data.
+*This* plugin enables the **Pi Agent** to make outgoing API calls to **Dr.DOC**. The agent uses these tool functions to search archives, retrieve documents, save them locally, and process binary/image data.
+
+* **GitHub Repository:** [github.com/drdoc-com/pi-drdoc](https://github.com/drdoc-com/pi-drdoc)
+* **npm Package:** [npmjs.com/package/@drdoc-com/pi-drdoc](https://www.npmjs.com/package/@drdoc-com/pi-drdoc)
+* **Pi Package Registry:** [pi.dev/packages/@drdoc-com/pi-drdoc](https://pi.dev/packages/@drdoc-com/pi-drdoc)
 
 ### 2. Dr.DOC → Pi (OpenAI API Wrapper)
 To allow **Dr.DOC** (or external tools) to send requests to Pi using the standard OpenAI API format, the `@drdoc-com/pi-openai-api-wrapper` package can be used.
 
 * **GitHub Repository:** [github.com/drdoc-com/pi-openai-api-wrapper](https://github.com/drdoc-com/pi-openai-api-wrapper)
-* **Pi Package Registry:** [pi.dev/packages/@drdoc-com/pi-openai-api-wrapper](https://pi.dev/packages/@drdoc-com/pi-openai-api-wrapper)
 * **npm Package:** [npmjs.com/package/@drdoc-com/pi-openai-api-wrapper](https://www.npmjs.com/package/@drdoc-com/pi-openai-api-wrapper)
+* **Pi Package Registry:** [pi.dev/packages/@drdoc-com/pi-openai-api-wrapper](https://pi.dev/packages/@drdoc-com/pi-openai-api-wrapper)
 
 ---
 
@@ -74,7 +78,7 @@ Suche im Dr.DOC Archiv "rec" alle Rechnungen von Firma Amazon aus diesem Jahr.
 
 ## Configuration
 
-The plugin utilizes configuration options supplied by the Dr.DOC client or environment variables.
+The extension package utilizes configuration options supplied by the Dr.DOC client or environment variables.
 
 ### Environment Variables
 
@@ -100,7 +104,8 @@ The plugin utilizes configuration options supplied by the Dr.DOC client or envir
 ## License
 
 This project is licensed under the Apache License 2.0.
-Dr.DOC DMS is licensed is under proprietary License.
+
+Dr.DOC® ECM/DMS is licensed is under proprietary License.
 
 ---
 
