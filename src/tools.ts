@@ -16,7 +16,7 @@ export async function getClient(config: DrDocConfig = {} as DrDocConfig, force: 
     clientInstance = new DrDocClient(config);
 
     // Verbindung testen
-    if (await clientInstance.state()) {
+    if (!force && (await clientInstance.state())) {
       msgInfo('Bereits in Dr.DOC angemeldet. Die Session ist aktiv.');
     }
     else {
