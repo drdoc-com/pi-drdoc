@@ -96,7 +96,7 @@ The extension package utilizes configuration options supplied by the Dr.DOC clie
 
 ### Security Notes
 * Pi Agent is designed as a **personal** AI agent. Users must operate their own private Pi Agent instance rather than using an instance hosted on the Dr.DOC Web Server.
-* Credential Persistence (/drdoc_login): When using the Dr.DOC AI Chat with Pi configured as the AI endpoint (via `@drdoc-com/pi-openai-api-wrapper`), the `/drdoc_login` command *MUST NOT* be executed. Authentication credentials within the Pi Agent instance are persistent and could potentially be exposed to other users sharing the same instance.
+* Credential Persistence (`/drdoc_login`): When using the Dr.DOC AI Chat with Pi configured as the AI endpoint (via `@drdoc-com/pi-openai-api-wrapper`), the `/drdoc_login` command *MUST NOT* be executed. Authentication credentials within the Pi Agent instance are persistent and could potentially be exposed to other users sharing the same instance.
 * Dedicated Service Account: Use a dedicated Dr.DOC user account with limited permissions (e.g. *Datensatzspezifische Berechtigungen*) based on the principle of least privilege (*"need-to-know"*) specifically for AI tasks and the `/drdoc_login` command.
 * Containerized Deployment: Whenever possible, run Pi Agent inside an isolated container environment (e.g., Docker, Podman) to ensure process isolation and security boundaries.
 
