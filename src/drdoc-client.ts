@@ -264,9 +264,16 @@ export class DrDocClient {
       headers: this.getHeaders(),
     });
 
-    this.processResponseCookies(response);
+    if (!response.ok) // (response.status >= 300)
+    {
+      throw new Error(`Bad GET Blob Request / Status: ${response.status} ${response.statusText} / Url: ${url} / Response: ${response.text()}`);
+    }
+    else {
+      // z.B. Status-Code 200
+      this.processResponseCookies(response);
 
-    return response.blob();
+      return response.blob();
+    }
   }
 
   /**
@@ -360,7 +367,7 @@ export class DrDocClient {
       return true;
     }
     else {
-      msgError('Bitte erneut anmelden mit Slash Command `/drdoc_login`');
+      msgError('Bitte erneut anmelden mit Slash Command `/drdoc-login`');
       if (process.env.DRDOC_DEBUG)
         msgLog('Dr.DOC: State ERROR: ' + JSON.stringify(this.config));
       return false;

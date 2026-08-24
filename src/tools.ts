@@ -22,7 +22,7 @@ export async function getClient(config: DrDocConfig = {} as DrDocConfig, force: 
     else {
       const response = await clientInstance.signin(config.username, config.password, config.totp);
       if (response.HasError)
-        throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc_login ausführen.");
+        throw new Error("getClient: DrDocClient ist nicht initialisiert. Bitte vorher den Befehl /drdoc-login ausführen.");
 
       msgInfo("Erfolgreich an Dr.DOC angemeldet. Die Session ist aktiv.");
 
@@ -87,6 +87,10 @@ export function safeExecuteClient<A extends Record<string, any> = Record<string,
   return safeExecute(async () => {
     const safeArgs = (args || {}) as A;
 
+    if (requiredParams.indexOf("archive") != -1 && !safeArgs["archive"]) {
+      safeArgs["archive"] = process.env.DRDOC_ARCHIVE;
+    }
+
     // Überprüfung aller erforderlichen Parameter
     const missing = requiredParams.filter(
       (param) => safeArgs[param] === undefined || safeArgs[param] === null || safeArgs[param] === ""
@@ -107,7 +111,7 @@ export function safeExecuteClient<A extends Record<string, any> = Record<string,
  */
 export const drdocTools = [
   {
-    name: "drdoc_login_2",
+    name: "drdoc_login_ex",
     description: "Meldet den Benutzer in Dr.DOC über die REST API an.",
     parameters: {
       type: "object",
@@ -342,10 +346,10 @@ Datumsformat: DD.MM.YYYY
         id: { type: "string", description: "Datensatz-ID (DrDocGUID oder Dokument-Nr.)" },
         idField: { type: "string", description: "Optionaler Feldname für die ID" },
       },
-      required: ["archive", "id"],
+      required: ["archive", "id", "idField"],
     },
     execute: async (toolCallId: string, args?: { archive?: string; id?: string; idField?: string }) => {
-      return safeExecuteClient(["archive", "id"], args, async (client, safeArgs) => {
+      return safeExecuteClient(["archive", "id", "idField"], args, async (client, safeArgs) => {
         // Dokumenten-Blob vom Client abrufen
         const responseData = await client.getDocument(safeArgs.archive, safeArgs.id, safeArgs.idField);
 
@@ -383,8 +387,8 @@ Datumsformat: DD.MM.YYYY
           fs.mkdirSync(downloadsDir, { recursive: true });
         }
 
-        // Dateiendung bestimmen und Dateinamen generieren
-        const extension = mimeType.includes("/") ? mimeType.split("/")[1] : "bin";
+        // Dateiendung bestimmen und Dateinamen generieren "text/json;charset=utf-8" =-> json
+        const extension = mimeType.includes("/") ? mimeType.split("/")[1].split(";")[0] : "bin";
         const safeId = safeArgs.id.replace(/[^a-zA-Z0-9_-]/g, "_");
         const fileName = `${safeArgs.archive}_${safeId}.${extension}`;
         const filePath = path.join(downloadsDir, fileName);

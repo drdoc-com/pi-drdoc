@@ -57,11 +57,11 @@ pi install git:https://github.com/drdoc-com/pi-drdoc
 Use Pi Slash Command (within Pi Agent) to signin/login.
 Format:
 ```bash
-/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>
+/drdoc-login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>
 ```
 Example:
 ```bash
-/drdoc_login https://drdoc.com demo password 123456 1
+/drdoc-login https://drdoc.com demo password 123456 1
 ```
 
 And signout/logout:
@@ -84,20 +84,21 @@ The extension package utilizes configuration options supplied by the Dr.DOC clie
 
 | Variable | Description | Default |
 | --- | --- | --- |
-| `DRDOC_BASE_URL` | Base URL of the Dr.DOC instance | `https://drdoc.com` |
+| `DRDOC_BASE_URL` | Default Base URL of the Dr.DOC instance | `https://drdoc.com` |
 | `DRDOC_CONFIG_DIR` (alt. `PI_CONFIG_DIR`) | Custom directory for config files | `~/.pi/agent` |
 | `DRDOC_DOWNLOAD_DIR` | Custom directory for downloaded files | `~/.drdoc/downloads` |
 | `DRDOC_IGNORE_SSL` | Ignore TLS/SSL Errors (Set `NODE_TLS_REJECT_UNAUTHORIZED=0`) |  |
 | `DRDOC_AI_FS_<ArchiveName>` | Dr.DOC *Archive specific* (upper-case) IMPORT_ASCII FieldSelection Name for Field Descriptions. | `DRDOC_AI_FS` |
-| `DRDOC_AI_FS` | Dr.DOC IMPORT_ASCII FieldSelection Name for Field Descriptions. | `STD_AI_INVOICE_IN`, `DD_FIELD_DESC`, `STD_FIELD_DESC` |
+| `DRDOC_AI_FS` | Default Dr.DOC IMPORT_ASCII FieldSelection Name for Field Descriptions. | `STD_AI_INVOICE_IN`, `DD_FIELD_DESC`, `STD_FIELD_DESC` |
+| `DRDOC_ARCHIVE` | Default Dr.DOC Archive Name. |  |
 | `DRDOC_DEBUG` | Enable Debugging |  |
 
 ---
 
 ### Security Notes
 * Pi Agent is designed as a **personal** AI agent. Users must operate their own private Pi Agent instance rather than using an instance hosted on the Dr.DOC Web Server.
-* Credential Persistence (`/drdoc_login`): When using the Dr.DOC AI Chat with Pi configured as the AI endpoint (via `@drdoc-com/pi-openai-api-wrapper`), the `/drdoc_login` command *MUST NOT* be executed. Authentication credentials within the Pi Agent instance are persistent and could potentially be exposed to other users sharing the same instance.
-* Dedicated Service Account: Use a dedicated Dr.DOC user account with limited permissions (e.g. *Datensatzspezifische Berechtigungen*) based on the principle of least privilege (*"need-to-know"*) specifically for AI tasks and the `/drdoc_login` command.
+* Credential Persistence (`/drdoc-login`): When using the Dr.DOC AI Chat with Pi configured as the AI endpoint (via `@drdoc-com/pi-openai-api-wrapper`), the `/drdoc-login` command *MUST NOT* be executed. Authentication credentials within the Pi Agent instance are persistent and could potentially be exposed to other users sharing the same instance.
+* Dedicated Service Account: Use a dedicated Dr.DOC user account with limited permissions (e.g. *Datensatzspezifische Berechtigungen*) based on the principle of least privilege (*"need-to-know"*) specifically for AI tasks and the `/drdoc-login` command.
 * Containerized Deployment: Whenever possible, run Pi Agent inside an isolated container environment (e.g., Docker, Podman) to ensure process isolation and security boundaries.
 
 ---
