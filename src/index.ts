@@ -16,8 +16,8 @@ export default function (pi: any): void {
   // Registrierung der Slash Commands
 
   // Login
-  pi.registerCommand("drdoc_login", {
-    description: "Benutzer anmelden in Dr.DOC über die REST API und speichert die Session: `/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`",
+  pi.registerCommand("drdoc-login", {
+    description: "Benutzer anmelden in Dr.DOC über die REST API und speichert die Session: `/drdoc-login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`",
     handler: async (args: string, ctx: any) => {
       // Entfernen leerer Strings nach dem String-Split
       const parts = args.trim().split(/\s+/); //.filter(Boolean);
@@ -27,7 +27,7 @@ export default function (pi: any): void {
         baseUrl = process.env.DRDOC_BASE_URL;
 
       if (!baseUrl || !username || !password) {
-        msgError("Fehler: Syntax ist `/drdoc_login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`");
+        msgError("Fehler: Syntax ist `/drdoc-login <baseUrl> <username> <password> <totp> <ignoreSSL:1,0>`");
         return;
       }
 
@@ -53,7 +53,7 @@ export default function (pi: any): void {
   });
 
   // Login
-  pi.registerCommand("drdoc_logout", {
+  pi.registerCommand("drdoc-logout", {
     description: "Benutzer abmelden aus Dr.DOC.",
     handler: async (args: string, ctx: any) => {
       const client = await getClient();
@@ -63,7 +63,7 @@ export default function (pi: any): void {
 
   if (process.env.DRDOC_DEBUG) {
     // Test
-    pi.registerCommand("drdoc_log_test", {
+    pi.registerCommand("drdoc-test", {
       description: "Log Test.",
       handler: async (args: string, ctx: any) => {
         const client = await getClient();
