@@ -66,7 +66,7 @@ Example:
 
 And signout/logout:
 ```bash
-/drdoc_logout
+/drdoc-logout
 ```
 
 ### Pi Agent Tool Calling
